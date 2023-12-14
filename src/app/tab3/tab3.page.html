@@ -1,0 +1,73 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      C A R R I T O
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Carrito</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-card id="resumen-pedido">
+    <ion-card-header>
+      <ion-card-title>Resumen de tu pedido</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item *ngFor="let item of cartService.carrito">
+          <ion-thumbnail slot="start">
+            <img alt="{{item.producto.nombre}}" src="{{item.producto.imagen}}" />
+          </ion-thumbnail>
+          <ion-label>{{item.producto.nombre}} {{item.cantidad}}</ion-label>
+          <ion-button [fill]="'clear'" (click)="cartService.eliminarProducto(item.producto.nombre)"><ion-icon name="trash-outline"></ion-icon></ion-button>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  
+  <ion-card class="flex-apart" id="envios-container">
+    <ion-card-header>
+      <ion-card-title>Detalle entrega:</ion-card-title>
+      <ng-container *ngIf="perfilService.perfil().nombre, else sinDatosEnvio">
+      <ion-label>Nombre: {{perfilService.perfil().nombre}}</ion-label>
+      <ion-label> Dirección: {{perfilService.perfil().direccion}}</ion-label>
+      <ion-label>   Telefono: {{perfilService.perfil().telefono}} </ion-label>  
+      <ion-label> {{perfilService.perfil().mensajePersonalizado}} </ion-label>  
+      </ng-container>
+      <ng-template #sinDatosEnvio>
+        <p>Ingresa tus datos de envio</p>
+      </ng-template> 
+    </ion-card-header>
+
+      <ion-card-content>
+        <a [routerLink]="['/tabs/tab2']" routerLinkActive="router-link-active" >
+        <ion-icon name="pencil"></ion-icon>
+      </a>
+      </ion-card-content>
+      
+      
+    </ion-card>
+
+  <ion-card id="subtotal">
+    <ion-card-content>
+      <ion-list [inset]="true">
+        <ion-item>
+          <ion-label>Subtotal: ${{cartService.totalCarrito}}</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-button expand="block" (click)="realizarPedido()">Realizar pedido</ion-button>
+   <ion-button expand="block" (click)="cartService.vaciarCarrito()">Borrar carrito</ion-button>
+  
+
+
+
+</ion-content>

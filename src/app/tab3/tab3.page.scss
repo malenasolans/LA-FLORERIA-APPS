@@ -1,0 +1,63 @@
+
+ion-button {
+    --background: pink; /* Cambia el color de fondo a tu preferencia */
+    --color: black ; /* Cambia el color del texto a tu preferencia */
+    --border-radius: 25px;
+    font-weight: bold;
+    margin: 10px;
+ 
+  }
+  
+  
+  ion-button:nth-child(2) {
+    --background: #e74c3c; /* Cambia el color de fondo a tu preferencia */
+    --color: #ffffff; /* Cambia el color del texto a tu preferencia */
+    --border-radius: 25px;
+    font-weight: bold;
+  }
+  
+  ion-title{
+    text-align: center
+  }
+.flex-apart{
+  display: flex;
+  justify-content: space-between;
+}
+#envios-container{
+  border-radius: 10px;
+  padding: 10px;
+  align-items: center;
+  margin: 10px;
+  width: 95%;
+}
+
+ion-subtitle{
+  font-weight: bold;
+}
+
+ion-item{
+  font-weight: bold;
+}
+
+#resumen-pedido{
+  border-radius: 10px;
+  padding: 10px;
+  align-items: center;
+  margin: 10px;
+  width: 95%;
+}
+
+#subtotal{
+  border-radius: 10px;
+  padding: 10px;
+  align-items: center;
+  margin: 10px;
+  width: 95%;
+  height: 20%;
+}
+
+
+ion-header {
+  --ion-background-color:  rgb(247, 221, 226); /* Puedes cambiar esto al color que desees */
+  --ion-color-base: #ffffff; /* Color del texto en el header */
+}
